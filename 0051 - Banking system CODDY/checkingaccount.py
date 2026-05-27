@@ -19,4 +19,17 @@ class CheckingAccount(Account):
         # TODO: If balance is negative, return message with "(Overdraft)" suffix
         # TODO: Otherwise return normal withdrawal message
         # TODO: Format: (True, f"Withdrew ${amount:.2f}. New balance: ${self.balance:.2f}")
-        pass
+        if amount > 0:
+            if amount > self.overdraft_limit+self.balance:
+                return (False, f"Cannot exceed overdraft limit of ${self.overdraft_limit:.2f}")
+            else:
+                self.balance -= amount
+                transaction = Transaction("withdrawal", amount, self)
+                self.transaction_history.append(transaction)
+                if self.balance < 0:
+                    return (True, f"Withdrew ${amount:.2f}. New balance: ${self.balance:.2f} (Overdraft)")
+                else:
+                    return (True, f"Withdrew ${amount:.2f}. New balance: ${self.balance:.2f}")
+
+        else:
+            return (False, "Withdrawal amount must be positive")

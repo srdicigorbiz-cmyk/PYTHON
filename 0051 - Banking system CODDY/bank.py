@@ -18,12 +18,22 @@ class Bank:
         # TODO: If invalid type, return (False, "Invalid account type")
         # TODO: Store account in self.accounts with account_number as key
         # TODO: Return (True, f"{account_type.title()} account created successfully")
-        pass
+        if account_number in self.accounts:
+            return (False, "Account number already exists")
+        else:
+            if account_type.lower() == "savings":
+                account = SavingsAccount(account_number, owner_name, initial_balance, **kwargs)  
+            elif account_type.lower() == "checking":
+                account = CheckingAccount(account_number, owner_name, initial_balance, **kwargs)
+            else:
+                return (False, "Invalid account type")
+        self.accounts[account_number]=account
+        return (True, f"{account_type.title()} account created successfully")
     
     def get_account(self, account_number):
         # TODO: Return account from self.accounts dictionary using account_number as key
         # TODO: Use .get() method to return None if account doesn't exist
-        pass
+        return self.accounts.get(account_number)
     
     def transfer(self, from_account_number, to_account_number, amount):
         # TODO: Get from_account and to_account using get_account method
@@ -33,4 +43,18 @@ class Bank:
         # TODO: If withdrawal fails, return (False, f"Transfer failed: {message}")
         # TODO: If withdrawal succeeds, deposit amount to to_account
         # TODO: Return (True, f"Transferred ${amount:.2f} from {from_account_number} to {to_account_number}")
-        pass
+        acc1 = self.get_account(from_account_number)
+        acc2= self.get_account(to_account_number)
+        if acc1 is None or acc2 is None:
+            return (False, "One or both accounts not found")
+        else:
+            success, message = acc1.withdraw(amount)
+            if success:
+                
+                acc2.deposit(amount)
+                return (True, f"Transferred ${amount:.2f} from {from_account_number} to {to_account_number}")
+            
+            
+            else:
+                return (False, f"Transfer failed: {message}")
+
