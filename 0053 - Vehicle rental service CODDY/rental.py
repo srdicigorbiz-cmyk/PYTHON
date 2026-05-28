@@ -10,7 +10,7 @@ class Rental:
     def calculate_cost(self):
         # TODO: Calculate and return the total cost by multiplying
         # TODO: the vehicle's daily_rate by the number of days
-        pass
+        return self.vehicle.daily_rate * self.days
     
     def end_rental(self):
         # TODO: Check if the rental is active (self.is_active is True)
@@ -18,10 +18,19 @@ class Rental:
         # TODO: Call the vehicle's end_rental method
         # TODO: Return True to indicate successful completion
         # TODO: If not active, return False
-        pass
+        if self.is_active is True:
+            self.is_active= False
+            self.vehicle.end_rental()
+            return True
+        else:
+            return False
     
     def __str__(self):
         # TODO: Create a status string based on self.is_active ("Active" or "Completed")
         # TODO: Return a formatted string in the format:
         # TODO: "Rental {rental_id}: {vehicle.make} {vehicle.model} for {customer_name} - {status}"
-        pass
+        if self.is_active is True:
+            status = "Active"
+        else:
+            status = "Completed"
+        return f"Rental {self.rental_id}: {self.vehicle.make} {self.vehicle.model} for {self.customer_name} - {status}"

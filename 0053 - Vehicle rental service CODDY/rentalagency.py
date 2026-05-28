@@ -1,3 +1,6 @@
+from rental import Rental
+
+
 class RentalAgency:
     def __init__(self, name):
         # Initialize properties
@@ -9,7 +12,8 @@ class RentalAgency:
     def add_vehicle(self, vehicle):
         # TODO: Add the vehicle to the vehicles dictionary using its VIN as the key
         # TODO: Return True to indicate successful completion
-        pass
+        self.vehicles[vehicle.vin]=vehicle
+        return True
     
     def rent_vehicle(self, vin, customer_name, days):
         # TODO: Check if the vehicle with the given VIN exists in self.vehicles
@@ -23,7 +27,18 @@ class RentalAgency:
         # TODO: Call the vehicle's start_rental method
         # TODO: Add the rental to self.rentals using rental_id as the key
         # TODO: Return the rental_id
-        pass
+        if vin in self.vehicles:
+            if self.vehicles[vin].available is True:
+                rental_id = f"R{self.next_rental_id}"
+                self.next_rental_id += 1
+                new_rental = Rental(rental_id, self.vehicles[vin], customer_name, days)
+                self.vehicles[vin].start_rental()
+                self.rentals[rental_id]=new_rental
+                return rental_id
+            else:
+                return None
+        else:
+            return None
     
     def return_vehicle(self, rental_id):
         # TODO: Check if the rental with the given rental_id exists in self.rentals
@@ -32,9 +47,15 @@ class RentalAgency:
         # TODO: Check if the rental is active
         # TODO: If not active, return False
         # TODO: Call the rental's end_rental method and return its result
-        pass
+        if rental_id in self.rentals:
+            if self.rentals[rental_id].is_active:
+                return self.rentals[rental_id].end_rental()
+            else:
+                return False
+        else:
+            return False
     
     def available_vehicles(self):
         # TODO: Return a list of all vehicles in self.vehicles.values() where vehicle.available is True
         # TODO: Use a list comprehension for this
-        pass
+        return [value for value in self.vehicles.values() if value.available == True]

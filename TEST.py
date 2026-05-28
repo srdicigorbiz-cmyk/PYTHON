@@ -4,3 +4,12 @@ L.append(12)
 L.insert(0,1)
 del L[3]
 print(L)
+
+dic = dict()
+dic["D"]=35
+#dic = {"a":13, "b":15}
+dic["c"]=34
+print(dic)
+
+print("c" in dic)
+print(dic["c"])
