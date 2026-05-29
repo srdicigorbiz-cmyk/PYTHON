@@ -1,4 +1,4 @@
-balance = 10000   #Imagine it is fetched from database.
+balance = 10000 
 counter = 0
 
 class BalanceException(Exception):
@@ -30,3 +30,5 @@ def transaction():
             balance = balance - amt
             print(f"Transaction is success, Remaining balance is: {balance}")
             return
+    
+transaction()
