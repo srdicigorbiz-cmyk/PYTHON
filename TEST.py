@@ -21,5 +21,5 @@ print("***************************")
 exp = "fff jj gg 11 22 *"
 print(exp.split(" "))
 print(len(exp.split(" ")))
-
 print(type("+"))
+
