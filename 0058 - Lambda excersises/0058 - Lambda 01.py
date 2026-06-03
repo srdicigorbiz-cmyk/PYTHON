@@ -31,13 +31,13 @@ print(csokis_gepem("nagy"))   # Kimenet: Kaptál egy nagy adag csoki fagyit!
 print(csokis_gepem("kicsi"))  # Kimenet: Kaptál egy kicsi adag csoki fagyit!
 
 print("****FILTER: vowels out***************************")
-iterable = input("Give me the word(s)") 
+iterable = "Test words for lambda function"
 function = lambda x: x not in ('a', 'e', 'i', 'o', 'u')
 no_vowels = filter(function, iterable)
 print(''.join(list(no_vowels)))
 
 print("***MAP:vowels x 2****************************")
-iterable = input("Give me the word(s)")
+iterable = "Test words for lambda function"
 function = lambda x: x*2 if x in ('a', 'e', 'i', 'o', 'u') else x
 double_vowels = map(function, iterable)
 print(''.join(list(double_vowels)))
@@ -53,5 +53,10 @@ sum_bigger1 = lambda lista: list(filter(lambda x: x > 20, list(map(sum, lista)))
 print(sum_bigger1([(1, 2, 3), (4, 5, 6), (7, 8, 9), (10, 11, 12)]))
 
 print("****MEDIAN***************************")
-median = 
+median = lambda x: sorted(x)[int(len(x)/2)] if len(x)%2==1 else ((sorted(x)[(int(len(x)/2))]+sorted(x)[(int(len(x)/2-1))])/2)
+print(median([2, 1, 5, 4, 3]))
+print(median([100, 5, 2, 7, 9, 12, 4, 1, 50, 25]))
+print(median([10, 20, 30, 40]))
 print(median([10, 5, 8, 7, 9, 4]))
+
+
