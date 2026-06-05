@@ -6,7 +6,8 @@ print(len(exp.split(" ")))
 
 print(type("+"))
 
-
+print(ord('A'))
+print(chr(65))
 
 #list
 print("***LIST************************")
