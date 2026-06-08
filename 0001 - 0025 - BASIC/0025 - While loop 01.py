@@ -52,5 +52,19 @@ def szamj_osszeg(n):
     print(result)
 szamj_osszeg(n)
         
-print("***szám palindrom***")
-n = int(input("Kérek egy számot:"))
+print("***PALINDROM***")
+def palindrom(n):
+    n = int(input("Kérek egy számot:"))
+    pal_result=0
+    pal_temp = n
+
+    while pal_temp > 0:
+        x = pal_temp % 10
+        pal_result = pal_result * 10 + x
+        pal_temp = pal_temp //10
+    
+    if n == pal_result:
+        return True
+    else:
+        return False
+print(palindrom(n))
