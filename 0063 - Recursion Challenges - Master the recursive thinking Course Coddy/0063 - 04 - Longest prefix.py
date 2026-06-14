@@ -1,5 +1,5 @@
 def lcp(a):
-   
+   pass
 
 
 
