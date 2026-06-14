@@ -1,8 +1,12 @@
 def lcp(a):
-   pass
+    if len(a)==0:
+        return ""
+    
+    
+   
 
 
 
-print(lcp(["somehow", "somewhat", "something", "some"]))
-print(lcp(["maximum", "minimum"]))
-print(lcp(["llo", "lloon"]))
+assert lcp(["somehow", "somewhat", "something", "some"]) == "some"
+assert lcp(["maximum", "minimum"]) == "m"
+assert print(lcp(["llo", "lloon"])) == "llo"
