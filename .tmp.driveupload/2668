@@ -1,0 +1,24 @@
+0000000000000000000000000000000000000000 6828393528cad050fbb0de96cc2de47a579a267b Igor Srdic <srdic.igor.biz@gmail.com> 1779803706 +0200	commit (initial): First upload
+6828393528cad050fbb0de96cc2de47a579a267b 7ccfc1d1e333896758d40d93483c0d263be9672a Igor Srdic <srdic.igor.biz@gmail.com> 1779804819 +0200	pull --tags origin main: Fast-forward
+7ccfc1d1e333896758d40d93483c0d263be9672a 463039cd7429743ddeadbd315141812a171f27ad Igor Srdic <srdic.igor.biz@gmail.com> 1779804988 +0200	commit: update of README.md
+463039cd7429743ddeadbd315141812a171f27ad 222a8c1bbebec0711bcc20740115b57b73f7fc4f Igor Srdic <srdic.igor.biz@gmail.com> 1779805570 +0200	commit: README update
+222a8c1bbebec0711bcc20740115b57b73f7fc4f 01ec488b9b8d0fb7fb99c9f6f17d9ec4ca304465 Igor Srdic <srdic.igor.biz@gmail.com> 1779876385 +0200	commit: Finished 0051 Banking system CODDY
+01ec488b9b8d0fb7fb99c9f6f17d9ec4ca304465 649cccfe5f3d0cc8a9ee627d8925b7fa4fa8d738 Igor Srdic <srdic.igor.biz@gmail.com> 1779897295 +0200	commit: Finished: 0052 - Game Character Development - CODDY
+649cccfe5f3d0cc8a9ee627d8925b7fa4fa8d738 8a4785ca2bcc66550c3ce7db4b23fd59bdd87018 Igor Srdic <srdic.igor.biz@gmail.com> 1779975495 +0200	commit: Finished 0053 - Vehicle rental service CODDY
+8a4785ca2bcc66550c3ce7db4b23fd59bdd87018 070218a3a5af56b1e1527e692059e5c269ed32e3 Igor Srdic <srdic.igor.biz@gmail.com> 1780073053 +0200	commit: Practicing exception handling in Python. Built in and user defined.
+070218a3a5af56b1e1527e692059e5c269ed32e3 68ccd2c01076f0198afe1a302523b3de418bd553 Igor Srdic <srdic.igor.biz@gmail.com> 1780161846 +0200	commit: Exception handling exercises
+68ccd2c01076f0198afe1a302523b3de418bd553 9194743b74e02ef62a827bc8a74aa132e142f38e Igor Srdic <srdic.igor.biz@gmail.com> 1780244631 +0200	commit: List comprehension exercises
+9194743b74e02ef62a827bc8a74aa132e142f38e d421805478c12edaabeac38df796311cb16e5f84 Igor Srdic <srdic.igor.biz@gmail.com> 1780319792 +0200	commit: Dictionary excersises
+d421805478c12edaabeac38df796311cb16e5f84 6005730da9520dc3e825ddd798b3a96be6425aa5 Igor Srdic <srdic.igor.biz@gmail.com> 1780390391 +0200	commit: Sets excersises
+6005730da9520dc3e825ddd798b3a96be6425aa5 dd1bea2380176620baba47180d0be206da829dc8 Igor Srdic <srdic.igor.biz@gmail.com> 1780417340 +0200	commit: Lambda excersises
+dd1bea2380176620baba47180d0be206da829dc8 90d96631681ba61e0cec88855c1e7162c40c0ce4 Igor Srdic <srdic.igor.biz@gmail.com> 1780512000 +0200	commit: Iterator excersises
+90d96631681ba61e0cec88855c1e7162c40c0ce4 95257697bc917b418273ded6b65ca2c9a817d1ae Igor Srdic <srdic.igor.biz@gmail.com> 1780590242 +0200	commit: Iterators excersise ( built in, itertool)
+95257697bc917b418273ded6b65ca2c9a817d1ae b49329bd4a2691186dac6d42acc6abe0173dee54 Igor Srdic <srdic.igor.biz@gmail.com> 1780679065 +0200	commit: Iteration excersises
+b49329bd4a2691186dac6d42acc6abe0173dee54 95b29cbdfd529ce3541e6e1cd7d1a69cf7fe7c47 Igor Srdic <srdic.igor.biz@gmail.com> 1780679127 +0200	commit: Iteration excersise
+95b29cbdfd529ce3541e6e1cd7d1a69cf7fe7c47 bb17d9e70a9551173a6d813ee7edcf76a1e6d249 Igor Srdic <srdic.igor.biz@gmail.com> 1780836220 +0200	commit: Iterators excersises
+bb17d9e70a9551173a6d813ee7edcf76a1e6d249 6e1c30fde2f59bf4c30e5d62faa35bf7db754a79 Igor Srdic <srdic.igor.biz@gmail.com> 1780848613 +0200	commit: While loop excersise
+6e1c30fde2f59bf4c30e5d62faa35bf7db754a79 48b97290ab1741d1062fddb795b635cdbdaef1ba Igor Srdic <srdic.igor.biz@gmail.com> 1780940265 +0200	commit: Index, iterators, while loop, for loop excersises
+48b97290ab1741d1062fddb795b635cdbdaef1ba e0eac536ff22ec273467edbedf8f27c7ee451072 Igor Srdic <srdic.igor.biz@gmail.com> 1781024364 +0200	commit: First API lessons and excersises
+e0eac536ff22ec273467edbedf8f27c7ee451072 ed969d20ddb00823abf781a3af4b2bfdee123970 Igor Srdic <srdic.igor.biz@gmail.com> 1781091502 +0200	commit: 0061 - Register Login System Project CODDY
+ed969d20ddb00823abf781a3af4b2bfdee123970 7bc07387d0947d7a89f702cf30f9f040c9000a51 Igor Srdic <srdic.igor.biz@gmail.com> 1781173626 +0200	commit: Finished 0062 - Email validator
+7bc07387d0947d7a89f702cf30f9f040c9000a51 4855b24fff80ddfc712c71ab0a6e7c0bef921e17 Igor Srdic <srdic.igor.biz@gmail.com> 1781423152 +0200	commit: Recursion excersises
