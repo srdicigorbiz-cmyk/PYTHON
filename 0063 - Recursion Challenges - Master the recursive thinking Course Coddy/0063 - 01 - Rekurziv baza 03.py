@@ -84,3 +84,53 @@ except AssertionError as e:
 ##########################################################
 ##########################################################
 print("*** FIND WORDS WITH A SPECIFIC LETTER ***")
+def find_words(lista, betu):
+    if len(lista)==0:
+        return []
+    
+    if isinstance(lista[0], list):
+        return find_words(lista[0], betu) + find_words(lista[1:], betu)
+    else:
+        if betu in lista[0]:
+            return [lista[0]] + find_words(lista[1:], betu)
+        else:
+            return find_words(lista[1:], betu)
+
+
+
+
+lista=["szavak", "orak", "zene", ["szamito", "zimbabwe"], "yukon"]
+betu = 'y'
+print(find_words(lista, betu))
+
+
+
+##########################################################
+##########################################################
+print("*** MAP TREE COUNT TXT FILES ***")
+def maptree(lista):
+    if len(lista)==0:
+        return 0
+    
+    if isinstance(lista[0], list):
+        return 0 + maptree(lista[0])+maptree(lista[1:])
+    else:        
+        if lista[0].endswith(".txt"):
+            return 1 + maptree(lista[1:])
+        else:
+            return 0 + maptree(lista[1:])
+
+# Mielőtt futtatnád a kódodat, itt egy tesztkészlet, amivel ellenőrizheted a működést:
+
+def test_maptree():
+    # Alap eset: üres
+    assert maptree([]) == 0
+    # Csak mappák fájlok nélkül
+    assert maptree(['Mappa', ['Al-mappa']]) == 0
+    # Kevert esetek
+    assert maptree(['doc1.txt', ['sub', 'doc2.txt']]) == 2
+    # Mélyen ágyazott
+    assert maptree(['root', ['a', ['b', ['c.txt']]]]) == 1
+    print("Minden teszt sikeres!")
+
+test_maptree()
