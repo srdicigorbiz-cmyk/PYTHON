@@ -1,7 +1,6 @@
 def solve_scores(filename):
     with open(filename) as f:
         lines = [line.strip() for line in f.readlines() if line.strip()]
-        
         # A fejléc az első sor, a diákok a többi
         header = lines[0].split(',')[1:] # ['Math', 'Science', 'History']
         students = [line.split(',') for line in lines[1:]]
