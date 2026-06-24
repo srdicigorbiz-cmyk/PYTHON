@@ -12,16 +12,16 @@ def search(filter_query, full_json):
     #configuring search engine
     search_result = []
     for record in json_data:
-        status = False
+        status = []
         for f,v in filter.items():
             try:
                 if record[f] == v:
-                    status = True
+                    status.append(True)
                 else:
-                    status = False
+                    status.append(False)
             except KeyError as e:
-                status = False
-        if status == True:
+                status.append(False)
+        if all(status):
             search_result.append(record)
     
     return search_result
