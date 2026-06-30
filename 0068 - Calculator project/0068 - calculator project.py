@@ -59,8 +59,23 @@ def struct(lista):
     lvl_one_op = ["*","mul","/","div","%","mod"]
     lvl_two_op = ["+", "add", "-", "sub"]
     
+    if isinstance(lista, (str, int, float, bool)) or len(lista) == 1 or not len(lista)%2:
+        raise Exception(f'Failed to structure "{lista}"')
+    
+    
+
+    if len(lista) == 2:
+        return lista
+
     if len(lista) == 3:
         return [lista[1], lista[0], lista[2]]
+
+    for l in lista:
+        if l == "^" or l == "pow":
+            idx = lista.index(l)
+            return struct(lista[:idx-1]+[[lista[idx],lista[idx-1], lista[idx+1]]]+lista[idx+2:])
+
+
 
     for l in lista:
         for op in lvl_one_op:
@@ -68,10 +83,51 @@ def struct(lista):
                 idx = lista.index(l)
                 return struct(lista[:idx-1]+[[lista[idx],lista[idx-1], lista[idx+1]]]+lista[idx+2:])
 
+    for l in lista:
+        for op in lvl_two_op:
+            if l == op:
+                idx = lista.index(l)
+                return struct(lista[:idx-1]+[[lista[idx],lista[idx-1], lista[idx+1]]]+lista[idx+2:])
+
+        
     if len(lista)>3:     
         return struct([[lista[1], lista[0], lista[2]]]+lista[3:])
     
-        
-
+def get_next(lst_str, idx):
+    if lst_str == "" or idx >= len(lst_str):
+        raise Exception("End of string")
     
+    result_string = ""    
+    #check for int or float
+    for n in range(0, (len(lst_str)-idx)):
+        check = lst_str[idx+n]
+        if check.isdigit() or check == ".":
+            result_string += lst_str[idx+n]
+        else:
+            break
+    
+    #check for operator
+    for n in range(0, (len(lst_str)-idx)):
+        check = lst_str[idx+n]
+        if check.isalpha() or check in ["+", "-", "*","/","%","^"]:
+            result_string += lst_str[idx+n]
+        else:
+            break
+    
+    if isinstance(result_string, str):
+        return result_string
 
+    if "." in result_string:
+        return float(result_string)
+    else:
+        return int(result_string)
+
+def parse(lst_str):
+    lst_str = lst_str.replace(' ', '')
+    a1 = get_next(lst_str, 0)
+    a2 = get_next(lst_str, lst_str.index(a1[-1])+1)
+    a3 = get_next(lst_str, lst_str.index(a2[-1])+1)
+    lista = [a1,a2,a3]
+    return struct(lista)
+
+print(parse("3 pow 2.5"))

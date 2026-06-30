@@ -3,10 +3,6 @@ lvl_one_op = ["*","mul","/","div","%","mod"]
 
 
 
-for l in lista:
-    for op in lvl_one_op:
-        if l == op:
-            print(lista.index(l))
-
-
-
+stri= ""
+stri1 = stri + "a"
+print(stri1)
