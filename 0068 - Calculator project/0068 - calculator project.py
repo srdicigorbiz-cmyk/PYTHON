@@ -56,9 +56,19 @@ def eval(lista):
     return calc(lista[0],num1,num2)
 
 def struct(lista):
+    lvl_one_op = ["*","mul","/","div","%","mod"]
+    lvl_two_op = ["+", "add", "-", "sub"]
+    
     if len(lista) == 3:
         return [lista[1], lista[0], lista[2]]
-    if len(lista)>3:
+
+    for l in lista:
+        for op in lvl_one_op:
+            if l == op:
+                idx = lista.index(l)
+                return struct(lista[:idx-1]+[[lista[idx],lista[idx-1], lista[idx+1]]]+lista[idx+2:])
+
+    if len(lista)>3:     
         return struct([[lista[1], lista[0], lista[2]]]+lista[3:])
     
         
