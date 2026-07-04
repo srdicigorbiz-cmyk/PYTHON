@@ -98,6 +98,7 @@ def get_next(lst_str, idx):
         raise Exception("End of string")
     
     result_string = ""    
+
     #check for int or float
     for n in range(0, (len(lst_str)-idx)):
         check = lst_str[idx+n]
@@ -114,20 +115,54 @@ def get_next(lst_str, idx):
         else:
             break
     
+
+
+    
+    if "." in result_string:
+        return float(result_string)
+    
+    if result_string.isdigit():
+        return int(result_string)
+
     if isinstance(result_string, str):
         return result_string
 
-    if "." in result_string:
-        return float(result_string)
-    else:
-        return int(result_string)
+def parse(input_string):
+    input_string = input_string.replace(' ', '')
+    idx = 0
 
-def parse(lst_str):
-    lst_str = lst_str.replace(' ', '')
-    a1 = get_next(lst_str, 0)
-    a2 = get_next(lst_str, lst_str.index(a1[-1])+1)
-    a3 = get_next(lst_str, lst_str.index(a2[-1])+1)
-    lista = [a1,a2,a3]
+    def list_maker():
+        lista = []
+        len_lst = len(input_string)
+        nonlocal idx
+
+        while idx < len_lst and input_string[idx] != ")":
+            if input_string[idx] == "(":
+                idx += 1
+                sub_list = list_maker()
+                lista.append(struct(sub_list))
+            else:
+                a = get_next(input_string, idx)
+                lista.append(a)
+                idx += len(str(a))
+            
+
+        if idx < len_lst and input_string[idx] == ")":
+            idx += 1
+
+        return lista   
+    
+    lista=list_maker()
     return struct(lista)
+    
+def pre_parse(input_string):
+    counter = 0
+    for s in input_string:
+        if s == "(":
+            counter += 1
+        elif s == ")":
+            counter -= 1
+    if counter != 0:
+        raise Exception("Not matching parenthesis")
+  
 
-print(parse("3 pow 2.5"))
