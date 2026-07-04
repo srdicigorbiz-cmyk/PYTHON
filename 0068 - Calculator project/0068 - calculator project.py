@@ -59,13 +59,17 @@ def struct(lista):
     lvl_one_op = ["*","mul","/","div","%","mod"]
     lvl_two_op = ["+", "add", "-", "sub"]
     
-    if isinstance(lista, (str, int, float, bool)) or len(lista) == 1 or not len(lista)%2:
+    if isinstance(lista, (str, int, float, bool)) or len(lista) == 1:
         raise Exception(f'Failed to structure "{lista}"')
     
-    
+    if  not len(lista)%2:
+        if len(lista) == 2:
+            return lista
+        else:
+            raise Exception(f'Failed to structure "{lista}"')
+   
 
-    if len(lista) == 2:
-        return lista
+    
 
     if len(lista) == 3:
         return [lista[1], lista[0], lista[2]]
@@ -99,32 +103,27 @@ def get_next(lst_str, idx):
     
     result_string = ""    
 
-    #check for int or float
-    for n in range(0, (len(lst_str)-idx)):
-        check = lst_str[idx+n]
-        if check.isdigit() or check == ".":
-            result_string += lst_str[idx+n]
-        else:
-            break
-    
-    #check for operator
-    for n in range(0, (len(lst_str)-idx)):
-        check = lst_str[idx+n]
-        if check.isalpha() or check in ["+", "-", "*","/","%","^"]:
-            result_string += lst_str[idx+n]
-        else:
-            break
-    
-
-
-    
-    if "." in result_string:
-        return float(result_string)
-    
-    if result_string.isdigit():
+    # 1. Ha számmal vagy ponttal kezdődik, beolvassuk a teljes számot (int vagy float)
+    if lst_str[idx].isdigit() or lst_str[idx] == ".":
+        for n in range(0, (len(lst_str)-idx)):
+            check = lst_str[idx+n]
+            if check.isdigit() or check == ".":
+                result_string += check
+            else:
+                break
+        if "." in result_string:
+            return float(result_string)
         return int(result_string)
-
-    if isinstance(result_string, str):
+    
+    # 2. Minden más esetben (operátorok, fura karakterek, szöveges műveletek),
+    # addig olvasunk egyben mindent, amíg számba, pontba vagy zárójelbe nem ütközünk.
+    else:
+        for n in range(0, (len(lst_str)-idx)):
+            check = lst_str[idx+n]
+            if check.isdigit() or check == "." or check in ["(", ")"]:
+                break
+            else:
+                result_string += check
         return result_string
 
 def parse(input_string):
@@ -165,4 +164,19 @@ def pre_parse(input_string):
     if counter != 0:
         raise Exception("Not matching parenthesis")
   
+def coordinate(input_string):
+    try:
+        pre_parse(input_string)
+        res_parse = parse(input_string)
+        return eval(res_parse)
+    except Exception as e:
+        return f"Error: {e}"
 
+if __name__ == '__main__':
+    
+    while True:
+        i = input()
+        if i == "q" or i == "quit":
+            break
+        else:
+            print(coordinate(i))
