@@ -17,4 +17,4 @@ def largestNum(n):
 
     return(max(results))
 
-print(largestNum(999))
+print(largestNum(123))
