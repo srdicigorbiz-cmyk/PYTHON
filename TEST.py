@@ -1,0 +1,7 @@
+parenthesis = {
+        "(":")",
+        "[":"]",
+        "{":"}"
+    }
+
+print(parenthesis["("])
