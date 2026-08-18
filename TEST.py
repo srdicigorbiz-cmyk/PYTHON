@@ -1,7 +1,4 @@
-parenthesis = {
-        "(":")",
-        "[":"]",
-        "{":"}"
-    }
+test = [1]
 
-print(parenthesis["("])
+if test:
+    print("elem")
