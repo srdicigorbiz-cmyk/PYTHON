@@ -48,30 +48,22 @@ class BinaryTree:
         a = eval(s.replace("null", "None"))
         self.root = self.buildTreeInner(a)
 
-def getHeight(node):
-    if node is None:
-        return 0
-    else:
-        return 1 + max(getHeight(node.getLeft()) , getHeight(node.getRight()))
-
-
-def isBalanced(treeString):
+def isSymmetric(treeString):
     bt = BinaryTree()
     bt.buildTree(treeString)
-    root = bt.getRoot()
-
-
-    def balance_sides(root):
-        
-        if root is None:
+    if bt.root is None:
+        return True
+    
+    def isMirror(node1, node2):
+        if not node1 and not node2:
             return True
-
-        if (abs(getHeight(root.getLeft()) - getHeight(root.getRight())) <= 1 
-        and balance_sides(root.getLeft()) 
-        and balance_sides(root.getRight())):
-            return True
+        elif node1 and node2:
+            return (
+            node1.getValue() == node2.getValue()
+            and isMirror(node1.getLeft(), node2.getRight())
+            and isMirror(node1.getRight(), node2.getLeft()) 
+            )
         else:
             return False
 
-
-    return balance_sides(root)
+    return isMirror(bt.root.getLeft(), bt.root.getRight())

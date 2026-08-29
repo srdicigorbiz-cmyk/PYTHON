@@ -48,30 +48,21 @@ class BinaryTree:
         a = eval(s.replace("null", "None"))
         self.root = self.buildTreeInner(a)
 
-def getHeight(node):
-    if node is None:
-        return 0
-    else:
-        return 1 + max(getHeight(node.getLeft()) , getHeight(node.getRight()))
-
-
-def isBalanced(treeString):
+def getMaxPath(treeString):
     bt = BinaryTree()
     bt.buildTree(treeString)
-    root = bt.getRoot()
 
-
-    def balance_sides(root):
-        
-        if root is None:
-            return True
-
-        if (abs(getHeight(root.getLeft()) - getHeight(root.getRight())) <= 1 
-        and balance_sides(root.getLeft()) 
-        and balance_sides(root.getRight())):
-            return True
-        else:
-            return False
-
-
-    return balance_sides(root)
+    if bt.root is None:
+        return 0
+    
+    def summing(node):
+        if not node.getLeft() and not node.getRight():
+            return node.getValue()
+        elif node.getLeft() and node.getRight():
+            return node.getValue() + max(summing(node.getLeft()), summing(node.getRight()))
+        elif node.getLeft() and not node.getRight():
+            return node.getValue() + summing(node.getLeft())
+        elif not node.getLeft() and node.getRight():
+            return node.getValue() + summing(node.getRight())
+    
+    return summing(bt.root)
