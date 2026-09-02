@@ -9,17 +9,22 @@ def removeDuplicates(arr):
         ll.addLast(a)
 
     if ll.size() == 0:
-        return None
+        return []
 
-    current = None   
+    current = ll.head
     result = []
 
-    for n in range(ll.size()):
-        value = ll.get(n)
-        if current != value:
-            current = value
-            result.append(current)
+    while current is not None and current.next is not None:
+        if current.value == current.next.value:
+            current.next = current.next.next
+        else:
+            current = current.next
         
+    current = ll.head
+
+    while current is not None:
+        result.append(current.value)
+        current = current.next
 
 
 
